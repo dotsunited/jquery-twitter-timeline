@@ -8,7 +8,7 @@
 ;(function($, window, document, undefined) {
 
     // Create the defaults once
-    var pluginName = 'tweetTimeline',
+    var pluginName = 'twitterTimeline',
         defaults = {
             username        : 'twitter',
             count           : 5,
@@ -66,12 +66,12 @@
             if (self.options.el) {
                 tweet = '<' + self.options.el + '>' + tweet + '</' + self.options.el + '>';
             }
-            $(self.element).prepend(self.options.animateAdd($(tweet)));
+            $(self.element).prepend(self.options.animateAdd($(tweet), idx));
 
             //remove last tweet if the number of elements is bigger than the defined count
             var tweets = $('>' + self.options.el, self.element);
             if (tweets.size() > self.options.count) {
-                self.options.animateRemove(tweets.last());
+                self.options.animateRemove(tweets.last(), idx);
             }
 
         });

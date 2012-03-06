@@ -25,8 +25,10 @@ Finally you have to initialize the plugin with your desired parameters:
         });
     </script>
 
-Configutation options
+Configuration options
 ---------------------
+
+You can pass a set of these options to the initialize function to set a custom behaviour for the plugin.
 
 <table>
     <tr>
@@ -126,3 +128,72 @@ Configutation options
         <td>Animate method to remove elements. This method has to remove the element from the DOM!</td>
     </tr>
 </table>
+
+Methods
+------------------
+
+If you want to manually refresh the tweet list, you can use the following method to fetch new tweets:
+
+    $('#tweetContainer').data('plugin_twitterTimeline').getTweets();
+
+
+The tweetTimeline plugin extends JavaScripts `String`-Object by the following methods that each can be called on any string:
+
+<table>
+    <tr>
+        <th>Method name</th>
+        <th>Example call</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>parseTweet</td>
+        <td>`someString.parseTweet();`</td>
+        <td>Parse a string (preferably the tweet text) and change all urls to links, all @usernames to profile links and link all #hashtags to the twitter search for that hashtag.</td>
+    </tr>
+    <tr>
+        <td>parseHashtag</td>
+        <td>`someString.parseHashtag()`</td>
+        <td>Parse a string (preferably the tweet text) and link all #hashtags to the twitter search for that hashtag</td>
+    </tr>
+    <tr>
+        <td>parseUsername</td>
+        <td>`someString.parseUsername()`</td>
+        <td>Parse a string (preferably the tweet text) and change all @usernames to profile links</td>
+    </tr>
+    <tr>
+        <td>parseURL</td>
+        <td>`someString.parseURL()`</td>
+        <td>Parse a string (preferably the tweet text) and change all urls to links</td>
+    </tr>
+</table>
+
+
+
+Example settings
+----------------
+
+The following example is used for the tweet box you can find on our [website](http://dotsunited.de).
+
+    <script type="text/javascript">
+        $(function() {
+            $('#tweetContainer').twitterTimeline({
+                username: 'dotsunited',
+                count: 1,
+                el: 'div',
+                tweetTemplate: function(item) {
+                    var dateRegEx = /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) ([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2}) \+([0-9]{4}) ([0-9]{4})$/;
+                    var date = dateRegEx.exec(item.created_at);
+                    var tweet = '<div class="date">' + date[3] + ' '  + date[2] + ' '  + date[8] + '</div><p>' + item.text.parseTweet() + '</p>';
+                    return tweet;
+                },
+                animateAdd: function(el) {
+                    return el.hide().delay(300).slideDown(500);
+                },
+                animateRemove: function(el) {
+                    el.slideUp(300, function() {
+                        el.remove();
+                    });
+                }
+            });
+        });
+    </script>
