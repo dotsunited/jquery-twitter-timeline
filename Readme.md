@@ -1,7 +1,8 @@
-twitter timeline
+twitterTimeline
 ================
 
-Twitter timeline is a jQuery Plugin to displays the last tweets of a twitter user that comes with a lot of configuration options
+twitterTimeline is a jQuery plugin to display the last tweets of a twitter user that comes with a lot of configuration options.
+Instead of the twitter search API this plugin uses the `GET statuses/user_timeline` from the API as the search does not return tweets older than a week
 
 Basic usage
 -----------
@@ -88,7 +89,7 @@ You can pass a set of these options to the initialize function to set a custom b
     <tr>
         <td>refresh</td>
         <td>boolean|integer</td>
-        <td>`60`</td>
+        <td>`false`</td>
         <td>If set to a numeric value, the timeline will be refreshed every `x` seconds. New tweets will be prepended to the list, and old tweets will be deleted to maintain the maximum number specified with the option `count`</td>
     </tr>
     <tr>

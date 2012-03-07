@@ -19,7 +19,7 @@
             include_rts     : false,
             exclude_replies : true,
 
-            refresh         : 60,
+            refresh         : false,
             url             : 'http://api.twitter.com/1/statuses/user_timeline.json',
             el              : 'p',
             tweetTemplate   : function(item) {
