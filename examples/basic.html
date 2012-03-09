@@ -6,75 +6,7 @@
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script type="text/javascript" src="../src/jquery.twitterTimeline.js"></script>
 
-        <style type="text/css" media="screen">
-            body {
-                font: 13px/1.4 'Helvetica Neue', 'Helvetica','Arial', sans-serif;
-                color: #333;
-            }
-
-            .container {
-                width: 500px;
-                margin: auto;
-            }
-
-            h1 {
-                border-bottom: 1px solid #d9d9d9;
-            }
-
-            #basic p {
-                border: 1px solid #f0f0f0;
-                background: #f9f9f9;
-                padding: 5px 10px;
-                color: #777;
-                text-shadow: 0 1px 0 #fff;
-            }
-            a {
-                color: #be2221;
-                text-decoration: none;
-            }
-
-            #custom > div {
-                border: 1px solid #f0f0f0;
-                background: #f9f9f9;
-                text-shadow: 0 1px 0 #fff;
-                margin-bottom: 1em;
-            }
-            #custom > div .date {
-                float: left;
-                width: 70px;
-                color: #999;
-                padding: 5px 10px 5px 0;
-            }
-            #custom > div .date .day {
-                display: block;
-                font-size: 2em;
-                font-weight: bold;
-                text-align: center;
-                line-height: 1;
-            }
-            #custom > div .date .month {
-                display: block;
-                text-align: center;
-            }
-            #custom > div .date .year {
-                display: block;
-                text-align: center;
-            }
-            #custom > div p {
-                padding: 5px 10px;
-                color: #777;
-            }
-            /*clearfix*/
-            #custom > div:before,
-            #custom > div:after {
-                content: ".";
-                display: block;
-                height: 0;
-                overflow: hidden;
-            }
-            #custom > div:after {clear: both;}
-            #custom > div {zoom: 1;} /* IE < 8 */
-        </style>
+        <link rel="stylesheet" type="text/css" href="basic.css" media="screen">
 
         <script type="text/javascript">
             $(function() {
@@ -113,5 +45,8 @@
             <h1>Custom setup</h1>
             <div id="custom"></div>
         </div>
+
+        <a id="dotsunited-tab" href="http://dotsunited.de">Dots United - Agentur für neue Medien</a>
+        <a href="http://github.com/dotsunited/jquery-twitter-timeline"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub"></a>
     </body>
 </html>

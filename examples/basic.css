@@ -1,0 +1,82 @@
+body {
+    font: 13px/1.4 'Helvetica Neue', 'Helvetica','Arial', sans-serif;
+    color: #333;
+}
+
+.container {
+    width: 500px;
+    margin: auto;
+}
+
+h1 {
+    border-bottom: 1px solid #d9d9d9;
+}
+
+#basic p {
+    border: 1px solid #f0f0f0;
+    background: #f9f9f9;
+    padding: 5px 10px;
+    color: #777;
+    text-shadow: 0 1px 0 #fff;
+}
+a {
+    color: #be2221;
+    text-decoration: none;
+}
+
+#custom > div {
+    border: 1px solid #f0f0f0;
+    background: #f9f9f9;
+    text-shadow: 0 1px 0 #fff;
+    margin-bottom: 1em;
+}
+#custom > div .date {
+    float: left;
+    width: 70px;
+    color: #999;
+    padding: 5px 10px 5px 0;
+}
+#custom > div .date .day {
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+}
+#custom > div .date .month {
+    display: block;
+    text-align: center;
+}
+#custom > div .date .year {
+    display: block;
+    text-align: center;
+}
+#custom > div p {
+    padding: 5px 10px;
+    color: #777;
+}
+/*clearfix*/
+#custom > div:before,
+#custom > div:after {
+    content: ".";
+    display: block;
+    height: 0;
+    overflow: hidden;
+}
+#custom > div:after {clear: both;}
+#custom > div {zoom: 1;} /* IE < 8 */
+
+#dotsunited-tab {
+    background: transparent url(http://labs.dotsunited.de/static/img/dotsunited-tab.png) 0 0 no-repeat !important;
+    display:block !important;
+    height:127px !important;
+    width:43px !important;
+    margin:0 !important;
+    padding:0 !important;
+    position:fixed !important;
+    text-indent:-9000px;
+    top:40% !important;
+    right: 0;
+
+    z-index:100001 !important;
+}
