@@ -69,7 +69,7 @@
             $(self.element).prepend(self.options.animateAdd($(tweet), idx));
 
             //remove last tweet if the number of elements is bigger than the defined count
-            var tweets = $('>' + self.options.el, self.element);
+            var tweets = $(self.element).children(self.options.el);
             if (tweets.size() > self.options.count) {
                 self.options.animateRemove(tweets.last(), idx);
             }
