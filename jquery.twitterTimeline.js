@@ -85,11 +85,11 @@
         });
 
         text = text.replace(/(^|\s)@(\w+)/g, function(u) {
-            return '<a href="http://twitter.com/' + u.replace("@","") + '" target="_blank">' + u + '</a>';
+            return '<a href="http://twitter.com/' + $.trim(u.replace("@","")) + '" target="_blank">' + u + '</a>';
         });
 
         text = text.replace(/(^|\s)#(\w+)/g, function(t) {
-            return '<a href="http://search.twitter.com/search?q=' + t.replace("#","%23") + '" target="_blank">' + t + '</a>';
+            return '<a href="http://search.twitter.com/search/' + $.trim(t.replace("#","%23")) + '" target="_blank">' + t + '</a>';
         });
 
         return text;
