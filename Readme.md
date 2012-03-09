@@ -33,14 +33,12 @@ You can pass a set of these options to the initialize function to set a custom b
 
 <table>
     <tr>
-        <th>Property</th>
-        <th>Type</th>
+        <th>Property (Type)</th>
         <th>Default</th>
         <th>Description</th>
     </tr>
     <tr>
-        <td><strong>apiParameter</strong></td>
-        <td>object</td>
+        <td><strong>apiParameter</strong> (object)</td>
         <td><pre><code>{
     screen_name     : 'twitter',
     since_id        : null,
@@ -53,50 +51,42 @@ You can pass a set of these options to the initialize function to set a custom b
         <td>These parameters will be used to call the twitter API. You can find a complete list of valid parameters [here](https://dev.twitter.com/docs/api/1/get/statuses/user_timeline)</td>
     </tr>
     <tr>
-        <td><strong>apiUrl</strong></td>
-        <td>string</td>
+        <td><strong>apiUrl</strong> (string)</td>
         <td>http://api.twitter.com/1/ statuses/user_timeline.json</td>
         <td>URL of the API that will be called with a JSONP-Call. Remind, that if you change the URL the expected parameters may vary!</td>
     </tr>
     <tr>
-        <td><strong>count</strong></td>
-        <td>integer</td>
+        <td><strong>count</strong> (integer)</td>
         <td>5</td>
         <td>Specifies the number of tweets that are displayed by the plugin.</td>
     </tr>
     <tr>
-        <td><strong>refresh</strong></td>
-        <td>boolean|integer</td>
+        <td><strong>refresh</strong> (boolean|integer)</td>
         <td>false</td>
         <td>If set to a numeric value, the timeline will be refreshed every x seconds. New tweets will be prepended to the list, and old tweets will be deleted to maintain the maximum number specified with the option count</td>
     </tr>
     <tr>
-        <td><strong>el</strong></td>
-        <td>string</td>
+        <td><strong>el</strong> (string)</td>
         <td>p</td>
         <td>Wrap this element around each tweet</td>
     </tr>
     <tr>
-        <td><strong>tweetTemplate</strong></td>
-        <td>object</td>
+        <td><strong>tweetTemplate</strong> (object)</td>
         <td>function(item) { return item.text.parseTweet(); }</td>
         <td>Function to render each tweet. The tweet data is passed as an argument, and the plugin is accessible via the this variable.</td>
     </tr>
     <tr>
-        <td><strong>loader</strong></td>
-        <td>boolean|string</td>
+        <td><strong>loader</strong> (boolean|string)</td>
         <td>false</td>
         <td>Class name of a loader placeholder that is inside the tweet container. Every element with this class will be removed with the animateRemove method on the first fetch call</td>
     </tr>
     <tr>
-        <td><strong>animateAdd</strong></td>
-        <td>object</td>
+        <td><strong>animateAdd</strong> (object)</td>
         <td>function(el) { return el; }</td>
         <td>Animate method to add elements. This method has to return the new element. If not, the element will not be added to the DOM.</td>
     </tr>
     <tr>
-        <td><strong>animateRemove</strong></td>
-        <td>object</td>
+        <td><strong>animateRemove</strong> (object)</td>
         <td>function(el) { el.remove(); }</td>
         <td>Animate method to remove elements. This method has to remove the element from the DOM!</td>
     </tr>
