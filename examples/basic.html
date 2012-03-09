@@ -12,11 +12,16 @@
             $(function() {
 
                 $('#basic').twitterTimeline({
-                    username: 'dotsunited'
+                    apiParameter: {
+                        screen_name: 'dotsunited'
+                    }
                 });
 
                 $('#custom').twitterTimeline({
-                    username: 'dotsunited',
+                    apiParameter: {
+                        screen_name: 'dotsunited',
+                        count: 5
+                    },
                     count: 5,
                     el: 'div',
                     tweetTemplate: function(item) {
@@ -28,8 +33,8 @@
                     animateAdd: function(el, idx) {
                         return el.hide().delay(500*idx).slideDown(500);
                     },
-                    animateRemove: function(el) {
-                        el.slideUp(300, function() {
+                    animateRemove: function(el, idx) {
+                        el.delay(300*idx).slideUp(300, function() {
                             el.remove();
                         });
                     }

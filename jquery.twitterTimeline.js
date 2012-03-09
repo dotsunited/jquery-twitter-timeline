@@ -10,17 +10,20 @@
     // Create the defaults once
     var pluginName = 'twitterTimeline',
         defaults = {
-            username        : 'twitter',
+            apiParameter    : {
+                screen_name     : 'twitter',
+                since_id        : null,
+                max_id          : null,
+                page            : 1,
+                trim_user       : true,
+                include_rts     : false,
+                exclude_replies : true
+            },
+            apiUrl          : 'http://api.twitter.com/1/statuses/user_timeline.json',
+
             count           : 5,
-            since_id        : null,
-            max_id          : null,
-            page            : 1,
-            trim_user       : true,
-            include_rts     : false,
-            exclude_replies : true,
 
             refresh         : false,
-            url             : 'http://api.twitter.com/1/statuses/user_timeline.json',
             el              : 'p',
             tweetTemplate   : function(item) {
                 return this.parseTweet(item.text);
@@ -58,8 +61,8 @@
         //add new tweets
         $(data.reverse()).each(function(idx, item) {
 
-            //set since_id for further updates
-            self.options.since_id = item.id_str;
+            //set since_id to current tweet for further updates
+            self.options.apiParameter.since_id = item.id_str;
 
             //get tweet html from template and prepend to list
             var tweet = self.options.tweetTemplate.call(self, item);
@@ -70,8 +73,8 @@
 
             //remove last tweet if the number of elements is bigger than the defined count
             var tweets = $(self.element).children(self.options.el);
-            if (tweets.size() > self.options.count) {
-                self.options.animateRemove(tweets.last(), idx);
+            if (tweets.length > self.options.count) {
+                self.options.animateRemove($(tweets[self.options.count]), idx);
             }
 
         });
@@ -95,34 +98,15 @@
         return text;
     };
 
-    Plugin.prototype.getTweets = function() {
+    Plugin.prototype.getTweets = function(options) {
 
-        var self = this,
-            requestParameter = {
-                screen_name     : this.options.username,
-                count           : this.options.count,
-                page            : this.options.page,
-                trim_user       : this.options.trim_user,
-                include_rts     : this.options.include_rts,
-                exclude_replies : this.options.exclude_replies
-            };
-
-        if (this.options.since_id) {
-            requestParameter = $.extend( {}, requestParameter, {
-                since_id: this.options.since_id
-            });
-        }
-
-        if (this.options.max_id) {
-            requestParameter = $.extend( {}, requestParameter, {
-                max_id: this.options.max_id
-            });
-        }
+        var self      = this,
+            parameter = options || this.options.apiParameter;
 
         $.ajax({
-            url         : this.options.url,
+            url         : this.options.apiUrl,
             crossDomain : true,
-            data        : requestParameter,
+            data        : parameter,
             dataType    : 'jsonp',
             success     : function(data, textStatus, jqXHR) {
                 self.updateTweets.call(self, data, textStatus, jqXHR);

@@ -39,93 +39,65 @@ You can pass a set of these options to the initialize function to set a custom b
         <th>Description</th>
     </tr>
     <tr>
-        <td>username</td>
+        <td><strong>apiParameter</strong></td>
+        <td>object</td>
+        <td><pre><code>{
+    screen_name     : 'twitter',
+    since_id        : null,
+    max_id          : null,
+    page            : 1,
+    trim_user       : true,
+    include_rts     : false,
+    exclude_replies : true
+}</code></pre></td>
+        <td>These parameters will be used to call the twitter API. You can find a complete list of valid parameters [here](https://dev.twitter.com/docs/api/1/get/statuses/user_timeline)</td>
+    </tr>
+    <tr>
+        <td><strong>apiUrl</strong></td>
         <td>string</td>
-        <td>`twitter`</td>
-        <td>The screen name of the user for whom to return results for</td>
+        <td>http://api.twitter.com/1/statuses/user_timeline.json</td>
+        <td>URL of the API that will be called with a JSONP-Call. Remind, that if you change the URL the expected parameters may vary!</td>
     </tr>
     <tr>
-        <td>count</td>
+        <td><strong>count</strong></td>
         <td>integer</td>
-        <td>`5`</td>
-        <td>Specifies the number of tweets to try and retrieve, up to a maximum of 200.</td>
+        <td>5</td>
+        <td>Specifies the number of tweets that are displayed by the plugin.</td>
     </tr>
     <tr>
-        <td>since_id</td>
-        <td>integer|string</td>
-        <td>`null`</td>
-        <td>Returns results with an ID greater than (that is, more recent than) the specified ID.</td>
-    </tr>
-    <tr>
-        <td>max_id</td>
-        <td>integer|string</td>
-        <td>`null`</td>
-        <td>Returns results with an tweet-ID less than (that is, older than) or equal to the specified ID.</td>
-    </tr>
-    <tr>
-        <td>page</td>
-        <td>integer</td>
-        <td>`1`</td>
-        <td>Specifies the page of results to retrieve.</td>
-    </tr>
-    <tr>
-        <td>trim_user</td>
-        <td>boolean</td>
-        <td>`true`</td>
-        <td>When set to either true each tweet returned in a timeline will include a user object including only the status authors numerical ID</td>
-    </tr>
-    <tr>
-        <td>include_rts</td>
-        <td>boolean</td>
-        <td>`false`</td>
-        <td>When set to either true, the timeline will contain native retweets (if they exist) in addition to the standard stream of tweets</td>
-    </tr>
-    <tr>
-        <td>exclude_replies</td>
-        <td>boolean</td>
-        <td>`true`</td>
-        <td>This parameter will prevent replies from appearing in the returned timeline</td>
-    </tr>
-    <tr>
-        <td>refresh</td>
+        <td><strong>refresh</strong></td>
         <td>boolean|integer</td>
-        <td>`false`</td>
-        <td>If set to a numeric value, the timeline will be refreshed every `x` seconds. New tweets will be prepended to the list, and old tweets will be deleted to maintain the maximum number specified with the option `count`</td>
+        <td>false</td>
+        <td>If set to a numeric value, the timeline will be refreshed every x seconds. New tweets will be prepended to the list, and old tweets will be deleted to maintain the maximum number specified with the option count</td>
     </tr>
     <tr>
-        <td>url</td>
+        <td><strong>el</strong></td>
         <td>string</td>
-        <td>`http://api.twitter.com/1/statuses/user_timeline.json`</td>
-        <td>URL of the API that will be called with a JSONP-Call</td>
-    </tr>
-    <tr>
-        <td>el</td>
-        <td>string</td>
-        <td>`p`</td>
+        <td>p</td>
         <td>Wrap this element around each tweet</td>
     </tr>
     <tr>
-        <td>tweetTemplate</td>
+        <td><strong>tweetTemplate</strong></td>
         <td>object</td>
-        <td>`function(item) { return item.text.parseTweet(); }`</td>
-        <td>Function to render each tweet. The tweet data is passed as an argument, and the plugin is accessible via the `this` variable.</td>
+        <td>function(item) { return item.text.parseTweet(); }</td>
+        <td>Function to render each tweet. The tweet data is passed as an argument, and the plugin is accessible via the this variable.</td>
     </tr>
     <tr>
-        <td>loader</td>
-        <td>string</td>
-        <td>`.loader`</td>
-        <td>Class name of a loader placeholder that is inside the tweet container. Every element with this class will be removed with the `animateRemove` method on the first fetch call</td>
+        <td><strong>loader</strong></td>
+        <td>boolean|string</td>
+        <td>false</td>
+        <td>Class name of a loader placeholder that is inside the tweet container. Every element with this class will be removed with the animateRemove method on the first fetch call</td>
     </tr>
     <tr>
-        <td>animateAdd</td>
+        <td><strong>animateAdd</strong></td>
         <td>object</td>
-        <td>`function(el) { return el; }`</td>
+        <td>function(el) { return el; }</td>
         <td>Animate method to add elements. This method has to return the new element. If not, the element will not be added to the DOM.</td>
     </tr>
     <tr>
-        <td>animateRemove</td>
+        <td><strong>animateRemove</strong></td>
         <td>object</td>
-        <td>`function(el) { el.remove(); }`</td>
+        <td>function(el) { el.remove(); }</td>
         <td>Animate method to remove elements. This method has to remove the element from the DOM!</td>
     </tr>
 </table>
@@ -133,41 +105,34 @@ You can pass a set of these options to the initialize function to set a custom b
 Methods
 ------------------
 
-If you want to manually refresh the tweet list, you can use the following method to fetch new tweets:
-
-    $('#tweetContainer').data('plugin_twitterTimeline').getTweets();
-
-
-The tweetTimeline plugin extends JavaScripts `String`-Object by the following methods that each can be called on any string:
+The tweetTimeline plugin provieds the following public methods:
 
 <table>
     <tr>
         <th>Method name</th>
-        <th>Example call</th>
+        <th>Parameter</th>
         <th>Description</th>
     </tr>
     <tr>
-        <td>parseTweet</td>
-        <td>`someString.parseTweet();`</td>
-        <td>Parse a string (preferably the tweet text) and change all urls to links, all @usernames to profile links and link all #hashtags to the twitter search for that hashtag.</td>
+        <td><strong>getTweets(options)</strong></td>
+        <td>(optional) object options</td>
+        <td>Fetch new Tweets from the API and add them to the containert. The optional options parameter extends/overwrites the apiParameters</td>
     </tr>
     <tr>
-        <td>parseHashtag</td>
-        <td>`someString.parseHashtag()`</td>
-        <td>Parse a string (preferably the tweet text) and link all #hashtags to the twitter search for that hashtag</td>
+        <td><strong>updateTweets(items)</strong></td>
+        <td>array items</td>
+        <td>Manually add tweets to the container</td>
     </tr>
     <tr>
-        <td>parseUsername</td>
-        <td>`someString.parseUsername()`</td>
-        <td>Parse a string (preferably the tweet text) and change all @usernames to profile links</td>
-    </tr>
-    <tr>
-        <td>parseURL</td>
-        <td>`someString.parseURL()`</td>
-        <td>Parse a string (preferably the tweet text) and change all urls to links</td>
+        <td><strong>parseTweet(text)</strong></td>
+        <td>string text</td>
+        <td>Parse a string (preferably the tweet text) and change all urls to links, usernames to profile links and link hashtags to the twitter search for that hashtag</td>
     </tr>
 </table>
 
+If you want to manually refresh the tweet list for example, you can use the following line to fetch new tweets:
+
+    $('#tweetContainer').data('plugin_twitterTimeline').getTweets();
 
 
 Example settings
@@ -178,7 +143,10 @@ The following example is used for the tweet box you can find on our [website](ht
     <script type="text/javascript">
         $(function() {
             $('#tweetContainer').twitterTimeline({
-                username: 'dotsunited',
+                apiParameter: {
+                    screen_name: 'dotsunited',
+                    count: 1
+                },
                 count: 1,
                 el: 'div',
                 tweetTemplate: function(item) {
