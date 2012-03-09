@@ -108,19 +108,14 @@
             crossDomain : true,
             data        : parameter,
             dataType    : 'jsonp',
-            success     : function(data, textStatus, jqXHR) {
-                self.updateTweets.call(self, data, textStatus, jqXHR);
-            }
+            success     : $.proxy(this.updateTweets, this)
         });
     };
 
     Plugin.prototype.init = function() {
-        var self = this;
 
         if (typeof this.options.refresh === 'number') {
-            this.interval = setInterval(function() {
-                self.getTweets.call(self);
-            }, this.options.refresh * 1000);
+            this.interval = setInterval($.proxy(this.getTweets, this), this.options.refresh * 1000);
         }
 
         this.getTweets();
