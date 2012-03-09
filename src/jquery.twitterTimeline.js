@@ -23,7 +23,7 @@
             url             : 'http://api.twitter.com/1/statuses/user_timeline.json',
             el              : 'p',
             tweetTemplate   : function(item) {
-                return item.text.parseTweet();
+                return this.parseTweet(item.text);
             },
             loader          : false,
             animateAdd      : function(el) {
@@ -78,33 +78,22 @@
 
     };
 
-    //http://www.simonwhatley.co.uk/parsing-twitter-usernames-hashtags-and-urls-with-javascript
-    if (typeof String.parseURL === 'undefined') {
-        String.prototype.parseURL = function() {
-            return this.replace(/(\b(https?|ftp|file):\/\/[\-A-Z0-9+&@#\/%?=~_|!:,.;]*[\-A-Z0-9+&@#\/%=~_|])/ig, function(url) {
-                return '<a href="' + url + '" target="_blank">' + url + '</a>';
-            });
-        };
-    }
-    if (typeof String.parseUsername === 'undefined') {
-        String.prototype.parseUsername = function() {
-            return this.replace(/(^|\s)@(\w+)/g, function(u) {
-                return '<a href="http://twitter.com/' + u.replace("@","") + '" target="_blank">' + u + '</a>';
-            });
-        };
-    }
-    if (typeof String.parseHashtag === 'undefined') {
-        String.prototype.parseHashtag = function() {
-            return this.replace(/(^|\s)#(\w+)/g, function(t) {
-                return '<a href="http://search.twitter.com/search?q=' + t.replace("#","%23") + '" target="_blank">' + t + '</a>';
-            });
-        };
-    }
-    if (typeof String.parseTweet === 'undefined') {
-        String.prototype.parseTweet = function() {
-            return this.parseURL().parseUsername().parseHashtag();
-        };
-    }
+    Plugin.prototype.parseTweet = function(text) {
+
+        text = text.replace(/(\b(https?|ftp|file):\/\/[\-A-Z0-9+&@#\/%?=~_|!:,.;]*[\-A-Z0-9+&@#\/%=~_|])/ig, function(url) {
+            return '<a href="' + url + '" target="_blank">' + url + '</a>';
+        });
+
+        text = text.replace(/(^|\s)@(\w+)/g, function(u) {
+            return '<a href="http://twitter.com/' + u.replace("@","") + '" target="_blank">' + u + '</a>';
+        });
+
+        text = text.replace(/(^|\s)#(\w+)/g, function(t) {
+            return '<a href="http://search.twitter.com/search?q=' + t.replace("#","%23") + '" target="_blank">' + t + '</a>';
+        });
+
+        return text;
+    };
 
     Plugin.prototype.getTweets = function() {
 

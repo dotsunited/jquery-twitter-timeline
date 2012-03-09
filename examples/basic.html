@@ -90,7 +90,7 @@
                     tweetTemplate: function(item) {
                         var dateRegEx = /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) ([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2}) \+([0-9]{4}) ([0-9]{4})$/;
                         var date = dateRegEx.exec(item.created_at);
-                        var tweet = '<div class="date"><span class="day">' + date[3] + '</span><span class="month">'  + date[2] + '</span><span class="year">'  + date[8] + '</span></div><p>' + item.text.parseTweet() + '</p>';
+                        var tweet = '<div class="date"><span class="day">' + date[3] + '</span><span class="month">'  + date[2] + '</span><span class="year">'  + date[8] + '</span></div><p>' + this.parseTweet(item.text) + '</p>';
                         return tweet;
                     },
                     animateAdd: function(el, idx) {
