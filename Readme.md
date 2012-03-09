@@ -55,7 +55,7 @@ You can pass a set of these options to the initialize function to set a custom b
     <tr>
         <td><strong>apiUrl</strong></td>
         <td>string</td>
-        <td><small>http://api.twitter.com/1/statuses/user_timeline.json</small></td>
+        <td>http://api.twitter.com/1/ statuses/user_timeline.json</td>
         <td>URL of the API that will be called with a JSONP-Call. Remind, that if you change the URL the expected parameters may vary!</td>
     </tr>
     <tr>
