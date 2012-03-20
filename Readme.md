@@ -1,8 +1,10 @@
 twitterTimeline
 ================
 
-twitterTimeline is a jQuery plugin to display the last tweets of a twitter user that comes with a lot of configuration options.
-Instead of the twitter search API this plugin uses the `GET statuses/user_timeline` from the API as the search does not return tweets older than a week
+twitterTimeline is a jQuery plugin to display the recent tweets of a twitter user that comes with a lot of configuration options.
+Instead of the twitter search API this plugin uses the `GET statuses/user_timeline` from the API as the search does not return tweets older than a week.
+
+If localStorage is supported by the client, the fetched tweets will be cached within the localStorage to ensure, that tweets are displayed as soon as possible.
 
 Basic usage
 -----------
