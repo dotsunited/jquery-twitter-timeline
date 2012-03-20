@@ -49,7 +49,7 @@
 
         this.interval  = null;
 
-        this.useLocalStorage = typeof localStorage === 'undefined' ? false : true ;
+        this.useLocalStorage = typeof localStorage !== 'undefined';
         this.localStorageKey = 'plugin_' + pluginName + '_' + this.options.apiParameter.screen_name;
 
         this.init();
