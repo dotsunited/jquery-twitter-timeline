@@ -12,6 +12,7 @@
         defaults = {
             apiParameter    : {
                 screen_name     : 'twitter',
+                count           : 5,
                 since_id        : null,
                 max_id          : null,
                 page            : 1,
@@ -48,6 +49,9 @@
 
         this.interval  = null;
 
+        this.useLocalStorage = typeof localStorage === 'undefined' ? false : true ;
+        this.localStorageKey = 'plugin_' + pluginName + '_' + this.options.apiParameter.screen_name;
+
         this.init();
     }
 
@@ -56,6 +60,14 @@
 
         if (this.options.loader) {
             this.options.animateRemove($(this.options.loader, this.element));
+        }
+
+        // update localStorage
+        if (this.useLocalStorage === true && data.length > 0) {
+            var cache = localStorage.getItem(self.localStorageKey);
+            cache = cache !== null ? JSON.parse(cache) : [];
+            cache = data.concat(cache).splice(0, this.options.count);
+            localStorage.setItem(self.localStorageKey, JSON.stringify(cache));
         }
 
         //add new tweets
@@ -118,6 +130,18 @@
             this.interval = setInterval($.proxy(this.getTweets, this), this.options.refresh * 1000);
         }
 
+        //read localStorage and write tweets if there are cached ones
+        if (this.useLocalStorage === true) {
+            var cache = localStorage.getItem(this.localStorageKey);
+            if (cache !== null) {
+                cache = JSON.parse(cache);
+                if (cache.length > 0 ) {
+                    this.updateTweets(cache);
+                }
+            }
+        }
+
+        //get new tweets
         this.getTweets();
     };
 
