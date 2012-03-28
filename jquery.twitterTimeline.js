@@ -12,7 +12,6 @@
         defaults = {
             apiParameter    : {
                 screen_name     : 'twitter',
-                count           : 5,
                 since_id        : null,
                 max_id          : null,
                 page            : 1,
@@ -67,7 +66,15 @@
             var cache = localStorage.getItem(self.localStorageKey);
             cache = cache !== null ? JSON.parse(cache) : [];
             cache = data.concat(cache).splice(0, this.options.count);
-            localStorage.setItem(self.localStorageKey, JSON.stringify(cache));
+            cache = JSON.stringify(cache);
+            try {
+                localStorage.removeItem(self.localStorageKey); // http://stackoverflow.com/questions/2603682/is-anyone-else-receiving-a-quota-exceeded-err-on-their-ipad-when-accessing-local
+                localStorage.setItem(self.localStorageKey, cache);
+            } catch (e) {
+                // local storage should not be used because of security reasons like private browsing
+                // disable for further updates
+                self.useLocalStorage = false;
+            }
         }
 
         //add new tweets
