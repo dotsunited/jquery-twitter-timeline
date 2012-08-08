@@ -11,7 +11,7 @@ Basic usage
 
 To use twitterTimeline you have to include the latest jQuery build and the twitterTimeline source inside the `head` tag of your HTML document:
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="/path/to/jquery.twitterTimeline.js"></script>
 
 The second step is to add a container element to your HTML where you want the tweets to appear, e.g. `div`:
