@@ -5,7 +5,7 @@
  *  License: GPL
  */
 
-;(function($, window, document, undefined) {
+;(function($) {
 
     // Create the defaults once
     var pluginName = 'twitterTimeline',
@@ -39,14 +39,9 @@
 
     // The actual plugin constructor
     function Plugin(element, options) {
-        this.element   = element;
-
-        this.options   = $.extend( {}, defaults, options);
-
-        this._defaults = defaults;
-        this._name     = pluginName;
-
-        this.interval  = null;
+        this.element  = element;
+        this.options  = $.extend( {}, defaults, options);
+        this.interval = null;
 
         this.useLocalStorage = typeof localStorage !== 'undefined' && typeof JSON !== 'undefined';
         this.localStorageKey = pluginName + '_' + this.options.apiParameter.screen_name;
@@ -119,8 +114,7 @@
 
     Plugin.prototype.getTweets = function(options) {
 
-        var self      = this,
-            parameter = options || this.options.apiParameter;
+        var parameter = options || this.options.apiParameter;
 
         $.ajax({
             url         : this.options.apiUrl,
@@ -160,4 +154,4 @@
         });
     };
 
-})(jQuery, window, document);
+})(jQuery);
