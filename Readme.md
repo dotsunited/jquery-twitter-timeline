@@ -124,7 +124,7 @@ The tweetTimeline plugin provieds the following public methods:
 
 If you want to manually refresh the tweet list for example, you can use the following line to fetch new tweets:
 
-    $('#tweetContainer').data('plugin_twitterTimeline').getTweets();
+    $('#tweetContainer').data('twitterTimeline').getTweets();
 
 
 Example settings

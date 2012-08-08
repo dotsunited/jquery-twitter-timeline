@@ -49,7 +49,7 @@
         this.interval  = null;
 
         this.useLocalStorage = typeof localStorage !== 'undefined' && typeof JSON !== 'undefined';
-        this.localStorageKey = 'plugin_' + pluginName + '_' + this.options.apiParameter.screen_name;
+        this.localStorageKey = pluginName + '_' + this.options.apiParameter.screen_name;
 
         this.init();
     }
@@ -154,8 +154,8 @@
 
     $.fn[pluginName] = function(options) {
         return this.each(function() {
-            if (!$.data(this, 'plugin_' + pluginName)) {
-                $.data(this, 'plugin_' + pluginName, new Plugin(this, options));
+            if (!$.data(this, pluginName)) {
+                $.data(this, pluginName, new Plugin(this, options));
             }
         });
     };
