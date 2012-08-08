@@ -158,3 +158,9 @@ The following example is used for the tweet box you can find on our [website](ht
             });
         });
     </script>
+
+License
+-------
+
+Copyright (c) 2012 Dots United GmbH.
+Licensed under the MIT, GPL licenses.

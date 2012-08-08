@@ -1,8 +1,9 @@
 /*
  *  Project: tweetTimeline
- *  Description: display the twitter timeline for a spe
- *  Author: Dots United GmbH
- *  License: GPL
+ *  Description: Display the recent tweets of a twitter user
+ *  Author: Robert Fleischmann (Dots United GmbH)
+ *  License: Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
+ *           or GPL Version 2 (http://www.opensource.org/licenses/gpl-2.0.php) licenses.
  */
 
 ;(function($) {
