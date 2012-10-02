@@ -163,4 +163,4 @@ License
 -------
 
 Copyright (c) 2012 Dots United GmbH.
-Licensed under the MIT, GPL licenses.
+Licensed under the MIT license.
