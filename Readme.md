@@ -54,7 +54,7 @@ You can pass a set of these options to the initialize function to set a custom b
     },
     dataType: 'jsonp'
 }</code></pre></td>
-        <td>Options passed to <code>$.ajax()</code>. Fot the <code>data</code> part, you can find a complete list of valid parameters [here](https://dev.twitter.com/docs/api/1/get/statuses/user_timeline)</td>
+        <td>Options passed to <code>$.ajax()</code>. For the <code>data</code> part, you can find a complete list of valid parameters here: https://dev.twitter.com/docs/api/1/get/statuses/user_timeline</td>
     </tr>
     <tr>
         <td><strong>count</strong> (integer)</td>
@@ -64,7 +64,7 @@ You can pass a set of these options to the initialize function to set a custom b
     <tr>
         <td><strong>refresh</strong> (boolean|integer)</td>
         <td>false</td>
-        <td>If set to a numeric value, the timeline will be refreshed every x milliseconds. New tweets will be prepended to the list, and old tweets will be deleted to maintain the maximum number specified with the option count</td>
+        <td>If set to a numeric value, the timeline will be refreshed every x milliseconds. New tweets will be prepended to the list, and old tweets will be deleted to maintain the maximum number specified with the <code>count</code> option.</td>
     </tr>
     <tr>
         <td><strong>tweetTemplate</strong> (object)</td>
