@@ -9,7 +9,7 @@
 
     var TwitterTimeline = $.twitterTimeline = function(element, options) {
         this.element  = $(element);
-        this.options  = $.extend({}, this.options, options || {});
+        this.options  = $.extend(true, {}, this.options, options || {});
 
         this._init();
     };
@@ -105,7 +105,7 @@
             }
         },
         fetch: function(options) {
-            var ajax = $.extend({}, this.options.ajax, options || {});
+            var ajax = $.extend(true, {}, this.options.ajax, options || {});
             
             var self = this,
                 success = ajax.success;
@@ -146,7 +146,7 @@
                 var instance = $(this).data('twitterTimeline');
 
                 if (instance) {
-                    $.extend(instance.options, options || {});
+                    $.extend(true, instance.options, options || {});
                 } else {
                     new TwitterTimeline(this, options);
                 }
