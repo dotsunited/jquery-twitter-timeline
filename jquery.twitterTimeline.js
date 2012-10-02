@@ -20,8 +20,6 @@
                 url: 'http://api.twitter.com/1/statuses/user_timeline.json',
                 data: {
                     screen_name     : 'twitter',
-                    since_id        : null,
-                    max_id          : null,
                     page            : 1,
                     trim_user       : true,
                     include_rts     : false,
