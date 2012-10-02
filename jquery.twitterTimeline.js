@@ -45,7 +45,7 @@
         _refreshTimeout: null,
         _init: function() {
             this._useLocalStorage = typeof localStorage !== 'undefined' && typeof JSON !== 'undefined';
-            this._localStorageKey = 'twitterTimeline_' + this.options.apiParameter.screen_name;
+            this._localStorageKey = 'twitterTimeline_' + this.options.ajax.data.screen_name;
 
             //read localStorage and write tweets if there are cached ones
             if (this._useLocalStorage === true) {
@@ -87,7 +87,7 @@
             //add new tweets
             $.each(data.reverse(), function(idx, item) {
                 //set since_id to current tweet for further updates
-                self.options.apiParameter.since_id = item.id_str;
+                self.options.ajax.data.since_id = item.id_str;
 
                 //get tweet html from template and prepend to list
                 var tweet = self.options.tweetTemplate.call(self, item);
